@@ -1,4 +1,6 @@
 pub mod tests;
+use tests::IntegrationTest;
+
 
 fn setup() {
     println!("Setup")
@@ -12,7 +14,9 @@ fn main() {
     setup();
 
     // TODO: Run the test
-
+    for t in inventory::iter::<IntegrationTest> {
+        (t.test_fn)()
+    }
     // Teardown test environment
     teardown();
 }
